@@ -22,6 +22,7 @@ export default function App() {
 	const [selectedWall, setSelectedWall] = useState("");
 	const [rotationWall, setRotationWall] = useState([-0.01, 9.5, 0]);
 
+
 	useEffect(() => {
 		switch (selectedWall) {
 			case "wall1":

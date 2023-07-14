@@ -9,7 +9,11 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 export function Model(props) {
-	let { nodes, materials } = useGLTF("/Barn_Testing.glb");
+	let { nodes, materials } = useGLTF(
+		import.meta.env.MODE === "production"
+			? "/resources/Barn_Testing.glb"
+			: "/Barn_Testing.glb"
+	);
 	// change the color of the selected wall
 	return (
 		<group {...props} dispose={null}>
@@ -94,4 +98,8 @@ export function Model(props) {
 	);
 }
 
-useGLTF.preload("/Barn_Testing.glb");
+useGLTF.preload(
+	import.meta.env.MODE === "production"
+		? "/resources/Barn_Testing.glb"
+		: "/Barn_Testing.glb"
+);
